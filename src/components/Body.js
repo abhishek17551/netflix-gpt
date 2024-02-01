@@ -1,19 +1,19 @@
 import React from 'react'
-import Login from './Login'
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Landing from './Landing'
 
 const Body = () => {
 
     const appRouter = createBrowserRouter([
         {
             path : "/",
-            element : <Login/>
+            element : <Landing/>
         }
     ])
   return (
     <div>
         <RouterProvider router={appRouter}/>
-        
     </div>
   )
 }
