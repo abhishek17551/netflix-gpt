@@ -4,7 +4,7 @@ import Login from './Login'
 
 const Landing = () => {
   return (
-    <div >
+    <div>
         <Header/>
         <div className='absolute'>
         <img 

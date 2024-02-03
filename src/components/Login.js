@@ -1,14 +1,19 @@
 import React, { useRef, useState } from 'react'
 import { checkValidation } from '../utils/validate';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/slices/userSlice';
 
 const Login = () => {
     const [isSignInForm,setIsSignInForm] = useState(true);
-    const [errorMessage,setErrorMessage] = useState(null)
+    const [errorMessage,setErrorMessage] = useState(null);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    //const username = useRef(null)
+    const username = useRef(null)
     const email = useRef(null)
     const password = useRef(null)
 
@@ -31,7 +36,16 @@ const Login = () => {
                 .then((userCredential) => {
                   // Signed up 
                   const user = userCredential.user;
-                  console.log(user)
+                  updateProfile(user, {
+                    displayName: username.current.value, photoURL: "https://res.cloudinary.com/dd1ynbj52/image/upload/v1689786938/socialMedia/profile-pic-8_hsifu9.jpg"
+                  }).then(() => {
+                    const {uid,email,displayName,photoURL} = auth.currentUser;
+                    dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+                    navigate("/home")
+                  }).catch((error) => {
+                    setErrorMessage(error)
+                  });
+                  //console.log(user)
                 })
                 .catch((error) => {
                   const errorCode = error.code;
@@ -43,7 +57,8 @@ const Login = () => {
             signInWithEmailAndPassword(auth,email.current.value,password.current.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user)
+                    //console.log(user)
+                    navigate("/home")
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -51,7 +66,6 @@ const Login = () => {
                     setErrorMessage(errorCode + " - " + errorMessage)
                 })
         }
-
     }
 
   return (
@@ -59,7 +73,7 @@ const Login = () => {
         <form onSubmit={(e) => e.preventDefault()} className='rounded-lg absolute bg-black flex flex-col my-52 mx-auto right-0 left-0 w-3/12 text-white p-4 bg-opacity-80'>
             <h1 className='font-bold mb-1 text-2xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
             {
-                !isSignInForm && <input type='text' placeholder='Enter Full Name' className='p-3 m-3 bg-slate-600 cursor-text'  />
+                !isSignInForm && <input ref={username} type='text' placeholder='Enter Full Name' className='p-3 m-3 bg-slate-600 cursor-text'  />
             }
             <input ref={email} type='text' placeholder='Enter Email Address' className='p-3 m-3 bg-slate-600 cursor-text rounded-md'/>
             <input ref={password} type='password' placeholder='Enter Password' className='p-3 m-3 bg-slate-600 rounded-md' />
