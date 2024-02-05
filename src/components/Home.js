@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import VideoBillboard from './VideoBillboard'
 
 const Home = () => {
 
@@ -8,6 +9,7 @@ const Home = () => {
   return (
     <div>
         <Header/>
+        <VideoBillboard/>
     </div>
   )
 }
