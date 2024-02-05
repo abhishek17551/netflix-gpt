@@ -19,7 +19,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User Signed in
         const {uid,email,displayName,photoURL} = user;
@@ -31,6 +31,9 @@ const Header = () => {
         navigate('/')
       }
     });
+
+    //Unsubscribe when component unmounts
+    return () => unsubscribe()
   },[])
   return ( 
     <div className='absolute px-7 py-3 w-full flex justify-between bg-gradient-to-b from-black z-10'>
