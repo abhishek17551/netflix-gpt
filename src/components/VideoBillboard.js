@@ -9,12 +9,12 @@ const VideoBillboard = () => {
 
     const billboardMovie = movies[2];
 
-    const {original_title, overview, release_date } = billboardMovie
-    console.log(typeof(release_date))
+    const {original_title, overview, release_date, id } = billboardMovie
+    
   
   return (
     <div>
-        <VideoBackground />
+        <VideoBackground movieId={id} />
         <VideoInfo title={original_title} overview={overview} date={release_date}/>
     </div>
   )
