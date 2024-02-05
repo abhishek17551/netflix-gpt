@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Landing from './Landing'
 import Home from './Home';
