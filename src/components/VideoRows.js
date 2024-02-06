@@ -11,7 +11,11 @@ const VideoRows = () => {
                 <div className='-mt-48  relative z-10'>
                     <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
                 </div>
-                
+                <MovieList title={"Popular"} movies={movies.popularMovies}/>
+                <MovieList title={"Top Rated"} movies={movies.topRatedMovies}/>
+                <MovieList title={"Upcoming"} movies={movies.upcomingMovies}/>
+                <MovieList title={"On Air Series"} movies={movies.onAirTVSeries}/>
+
             </div>
         )
   )
