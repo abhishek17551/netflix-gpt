@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/slices/userSlice';
 import { BRAND_LOGO } from '../utils/constants';
+import { toggleGptSearchView } from '../utils/slices/gptSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user)
+  
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
@@ -17,6 +19,10 @@ const Header = () => {
     }).catch((error) => {
         navigate("/error")
     });
+  }
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView())
   }
 
   useEffect(() => {
@@ -43,9 +49,10 @@ const Header = () => {
           user && (
             //display only if user is signed in
             <div className='flex p-2 m-1'>
+              <button onClick={handleGptSearchClick} className='bg-green-700 font-bold text-white p-1 rounded-md h-10 my-auto hover:bg-green-500'>GPT Search</button>
               <h3 className='font-bold text-white m-2'>Hello, {user?.displayName} 👋 </h3>
               <img className='w-10 h-10 rounded-md mr-3 cursor-pointer' src={user?.photoURL} alt='user-icon'/>
-              <button onClick={handleSignOut}className='bg-red-600 font-bold text-white p-1 rounded-md h-10 my-auto hover:bg-red-700'>Sign Out</button>
+              <button onClick={handleSignOut} className='bg-red-600 font-bold text-white p-1 rounded-md h-10 my-auto hover:bg-red-700'>Sign Out</button>
             </div>
           )
         }

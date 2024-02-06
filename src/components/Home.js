@@ -7,8 +7,13 @@ import useUpcomingMovies from '../hooks/useUpcomingMovies'
 import useOnAirTVSeries from '../hooks/useOnAirTVSeries'
 import VideoBillboard from './VideoBillboard'
 import VideoRows from './VideoRows'
+import { useSelector } from 'react-redux'
+import GptSearch from './GptSearch'
 
 const Home = () => {
+
+    const showGptSearch = useSelector(store => store.gpt.showGptSearch)
+    console.log(showGptSearch)
 
     useNowPlayingMovies();
     usePopularMovies();
@@ -18,8 +23,17 @@ const Home = () => {
   return (
     <div>
         <Header/>
-        <VideoBillboard/>
-        <VideoRows/>
+        {
+          showGptSearch ? (
+          <GptSearch/>
+          ) : (
+          <>
+            <VideoBillboard/>
+            <VideoRows/>
+          </>
+          )
+        }
+
     </div>
   )
 }
