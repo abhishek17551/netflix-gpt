@@ -5,8 +5,8 @@ export const lang = {
       gptSearchPlaceholder: 'Hit me up with what you want watch today...',
     },
     kannada: {
-      greeting : "",
-      search: "ನಮಸ್ಕಾರ",
+      greeting : "ನಮಸ್ಕಾರ",
+      search: "ಹುಡುಕಿ",
       gptSearchPlaceholder: "ಇಂದು ನೀವು ಏನನ್ನು ವೀಕ್ಷಿಸಲು ಬಯಸುತ್ತೀರೋ ಅದನ್ನು ನನಗೆ ಹೇಳು...",
     },
     german: {
