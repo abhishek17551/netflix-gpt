@@ -8,7 +8,7 @@ import useOnAirTVSeries from '../hooks/useOnAirTVSeries'
 import VideoBillboard from './VideoBillboard'
 import VideoRows from './VideoRows'
 import { useSelector } from 'react-redux'
-import GptSearch from './GptSearch'
+import GptSearch from './GptSearchPage'
 
 const Home = () => {
 
