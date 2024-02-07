@@ -13,7 +13,7 @@ import GptSearch from './GptSearchPage'
 const Home = () => {
 
     const showGptSearch = useSelector(store => store.gpt.showGptSearch)
-    console.log(showGptSearch)
+
 
     useNowPlayingMovies();
     usePopularMovies();

@@ -4,6 +4,8 @@ export const LANDING_PAGE_BG = "https://assets.nflxext.com/ffe/siteui/vlv3/9134d
 
 export const USER_LOGO = "https://occ-0-4994-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
 
+export const GPT_API_KEY = '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'
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {

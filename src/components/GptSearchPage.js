@@ -4,7 +4,6 @@ import GptMovieSuggestions from './GptMovieSuggestions'
 import { LANDING_PAGE_BG } from '../utils/constants'
 
 const GptSearch = () => {
-    console.log('from gpt search')
   return (
     <div className=''>
         <div className='absolute -z-10'>
